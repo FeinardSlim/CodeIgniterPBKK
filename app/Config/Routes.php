@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Models\StudentController;
+
 use function PHPUnit\Framework\any;
 
 // Create a new instance of our RouteCollection class.
@@ -35,7 +37,10 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Pages::index');
-// $routes->get('img/','Pages::GetAsset/$1');;
+$routes->get('students/create', 'StudentController::create');
+$routes->get('students/edit/(:any)','StudentController::edit/$1');
+$routes->get('students/delete/(:any)','StudentController::delete/$1');
+$routes->get('students', 'StudentController::index');
 $routes->get('(:any)','Pages::view/$1');
 
 /*

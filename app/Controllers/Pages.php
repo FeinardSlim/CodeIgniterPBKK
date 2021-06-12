@@ -8,9 +8,10 @@ class Pages extends Controller
 {
     public function index()
     {   
-        echo view('templates/header');
-        echo view('pages/index');
-        echo view('templates/footer');
+        $data['title'] = 'Homepage';
+        echo view('templates/header' , $data);
+        echo view('pages/index' , $data);
+        echo view('templates/footer', $data);
     }
 
     public function view($page = 'index')
@@ -21,8 +22,9 @@ class Pages extends Controller
         }
         $data['title'] = ucfirst($page); // Capitalize the first letter
 
+        // var_dump(view('pages/' . $page . '/profile'));
         echo view('templates/header', $data);
-        echo view('pages/' . $page, $data);
+        echo view('pages/' . $page , $data);
         echo view('templates/footer', $data);
     }
 
